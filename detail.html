@@ -82,13 +82,21 @@
         <div class="header-top">
             <div class="banner-header">
                 <div class="open-btn" id="openBtn"><i class="fa-solid fa-bars"></i></div>
-                <div class="brand-name" id="brandName">Nettrom</div>
+                <div class="brand-name" id="brandName"><a href="index.html">Nettrom</a></div>
                 
                 <div class="user-bar">
                     <div class="sreach-button"><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <div class="avatar">
-                        <i class="fa-regular fa-user"></i>
-                        
+    
+                    <div class="user-wrapper" id="userWrapper">
+                        <div class="avatar" id="userAvatar"><i class="fa-regular fa-user"></i></div>
+        
+                        <ul class="account-dropdown" id="accountDropdown">
+                            <li><a href=""><i class="fa-solid fa-user-gear"></i> Quản lý tài khoản</a></li>
+                            <li><a href=""><i class="fa-solid fa-bookmark"></i> Truyện đã lưu</a></li>
+                            <li><a href=""><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử đọc</a></li>
+                            <li><a href="login.html"><i class="fa-solid fa-user-circle"></i> Đăng nhập</a></li>
+                            <li><a href=""><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -134,8 +142,66 @@
         </div>
     </header>
     <!--Main Content-->
-    <main>
-        
+<main>
+        <div class="detail-container">
+            <div class="breadcrumb">
+                <a href="index.html">Trang chủ</a> <i class="fa fa-angle-right"></i> <span id="mangaBreadcrumb">Tên truyện</span>
+            </div>
+
+            <div class="manga-detail-block">
+                <div class="detail-left">
+                    <img id="detailCover" src="" alt="Manga Cover">
+                </div>
+                <div class="detail-right">
+                    <h1 class="detail-manga-title" id="detailTitle">Đang tải...</h1>
+                    
+                    <div class="info-row">
+                        <span class="info-label"><i class="fa-solid fa-user"></i> Tác giả:</span>
+                        <span class="info-value" id="detailAuthor">...</span>
+                    </div>
+                    
+                    <div class="info-row">
+                        <span class="info-label"><i class="fa-solid fa-signal"></i> Tình trạng:</span>
+                        <span class="info-value">Đang tiến hành</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span class="info-label"><i class="fa-solid fa-tags"></i> Thể loại:</span>
+                        <div class="detail-tags" id="detailTags">
+                            </div>
+                    </div>
+
+                    <div class="detail-actions">
+                        <button class="btn btn-read-first"><i class="fa-solid fa-book-open"></i> Đọc từ đầu</button>
+                        <button class="btn btn-read-last">Đọc mới nhất</button>
+                        <button class="btn btn-follow"><i class="fa-regular fa-bookmark"></i> Theo dõi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="manga-summary-block">
+                <h3 class="block-title"><i class="fa-solid fa-file-lines"></i> Sơ lược nội dung</h3>
+                <p id="detailDesc">Nội dung đang được cập nhật...</p>
+            </div>
+
+            <div class="manga-chapters-block">
+                <h3 class="block-title"><i class="fa-solid fa-list"></i> Danh sách chương</h3>
+                <div class="chapters-list">
+                    <div class="chapter-item">
+                        <a href="#">Chương mới nhất</a>
+                        <span>Cập nhật vừa xong</span>
+                    </div>
+                    <div class="chapter-item">
+                        <a href="#">Chương trước đó</a>
+                        <span>1 ngày trước</span>
+                    </div>
+                    <div class="chapter-item">
+                        <a href="#">Chương 1</a>
+                        <span>10 ngày trước</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <script src="./javascript/main.js"></script>
 </body>

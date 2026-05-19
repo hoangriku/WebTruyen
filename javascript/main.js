@@ -149,6 +149,56 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSlider(currentIndex);
         resetAutoplay();
     }
+    // ── XỬ LÝ CHO TRANG DETAIL.HTML ──
+    // Kiểm tra xem các element của trang detail có tồn tại không
+    const detailTitle = document.getElementById('detailTitle');
+    
+    if (detailTitle) {
+        // Lấy query string từ URL (Ví dụ: ?id=2)
+        const urlParams = new URLSearchParams(window.location.search);
+        const mangaId = urlParams.get('id');
+
+        // Ép kiểu về số nguyên
+        const index = parseInt(mangaId, 10);
+
+        // Kiểm tra tính hợp lệ của index trong mảng dữ liệu mangaData
+        if (!isNaN(index) && mangaData[index]) {
+            const manga = mangaData[index];
+
+            // Đổ dữ liệu vào các thẻ tương ứng
+            document.title = manga.title + " - Nettrom";
+            detailTitle.textContent = manga.title;
+            
+            const detailBreadcrumb = document.getElementById('mangaBreadcrumb');
+            if (detailBreadcrumb) detailBreadcrumb.textContent = manga.title;
+
+            const detailCover = document.getElementById('detailCover');
+            if (detailCover) detailCover.src = manga.image;
+
+            const detailAuthor = document.getElementById('detailAuthor');
+            if (detailAuthor) detailAuthor.textContent = manga.author;
+
+            const detailDesc = document.getElementById('detailDesc');
+            if (detailDesc) detailDesc.textContent = manga.desc;
+
+            // Render danh sách tags
+            const detailTagsContainer = document.getElementById('detailTags');
+            if (detailTagsContainer) {
+                detailTagsContainer.innerHTML = ''; // Xóa rỗng mẫu cứng ban đầu
+                manga.tags.forEach(tagText => {
+                    const span = document.createElement('span');
+                    span.className = 'tag-link'; // Class css cho tag ở trang detail
+                    span.textContent = tagText;
+                    detailTagsContainer.appendChild(span);
+                });
+            }
+        } else {
+            // Trường hợp URL không có ID hợp lệ hoặc không tìm thấy truyện
+            detailTitle.textContent = "Không tìm thấy thông tin bộ truyện này!";
+            const detailLeft = document.querySelector('.detail-left');
+            if (detailLeft) detailLeft.style.display = 'none';
+        }
+    }
 });
 
 // Khối dữ liệu mảng Manga
