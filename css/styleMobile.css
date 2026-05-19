@@ -248,3 +248,22 @@
         display: none;
     }
 }
+.manga-detail-block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.info-row {
+    flex-direction: column;
+    gap: 5px;
+}
+.info-label {
+    width: auto;
+}
+.detail-tags {
+    justify-content: center;
+}
+.detail-actions {
+    justify-content: center;
+    margin-top: 20px;
+}
