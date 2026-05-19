@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/styleMobile.css">
-    <title>Document</title>
+    <title>Home Page</title>
 </head>
 <body>
 
@@ -72,8 +72,8 @@
             <span>Tìm kiếm</span>
         </a>
         <a href="#" class="nav-item">
-            <i class="fa fa-book"></i>
-            <span>Thư viện</span>
+            <i class="fa fa-user"></i>
+            <span>Người dùng</span>
         </a>
     </nav>
 
@@ -86,7 +86,18 @@
                 
                 <div class="user-bar">
                     <div class="sreach-button"><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <div class="avatar"><i class="fa-regular fa-user"></i></div>
+    
+                    <div class="user-wrapper" id="userWrapper">
+                        <div class="avatar" id="userAvatar"><i class="fa-regular fa-user"></i></div>
+        
+                        <ul class="account-dropdown" id="accountDropdown">
+                            <li><a href=""><i class="fa-solid fa-user-gear"></i> Quản lý tài khoản</a></li>
+                            <li><a href=""><i class="fa-solid fa-bookmark"></i> Truyện đã lưu</a></li>
+                            <li><a href=""><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử đọc</a></li>
+                            <li><a href="login.html"><i class="fa-solid fa-user-circle"></i> Đăng nhập</a></li>
+                            <li><a href=""><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

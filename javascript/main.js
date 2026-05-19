@@ -5,8 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileDrawer = document.getElementById('mobileDrawer');
     const mobileOverlay = document.getElementById('mobileOverlay');
     const btnClose = document.getElementById('closeBtn');
-const openBtn = document.getElementById('openBtn');
+    const openBtn = document.getElementById('openBtn');
     const headerBottom = document.getElementById('headerBottom');
+
+    const userAvatar = document.getElementById('userAvatar');
+    const accountDropdown = document.getElementById('accountDropdown');
 
     // Hàm thực thi mở Menu Danh mục
     function openMobileMenu(e) {
@@ -21,14 +24,12 @@ const openBtn = document.getElementById('openBtn');
         if (mobileOverlay) mobileOverlay.classList.remove('show');
     }
 
-    // Gán chức năng đóng khi nhấn nút mũi tên lùi hoặc nhấn vùng mờ overlay
     if (btnClose) btnClose.addEventListener('click', closeMobileMenu);
     if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
 
     if (openBtn && headerBottom) {
         openBtn.addEventListener('click', function (e) {
             e.preventDefault();
-            // Thêm hoặc xóa class .show để ẩn/hiện toàn bộ tầng dưới
             headerBottom.classList.toggle('show');
         });
     }
@@ -48,7 +49,6 @@ const openBtn = document.getElementById('openBtn');
             }
         });
     });
-
     
     const dropdownHeaders = document.querySelectorAll('.mobile-menu-drawer .dropdown-header');
     dropdownHeaders.forEach(header => {
@@ -66,6 +66,18 @@ const openBtn = document.getElementById('openBtn');
         });
     });
 
+    if (userAvatar && accountDropdown) {
+        userAvatar.addEventListener('click', function (e) {
+            e.stopPropagation();
+            accountDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!accountDropdown.contains(e.target) && e.target !== userAvatar) {
+                accountDropdown.classList.remove('show');
+            }
+        });
+    }
     // ── HỆ THỐNG BANNER SLIDER TỰ ĐỘNG ĐỔI TRUYỆN CHÍNH ──
     let currentIndex = 0;
     let sliderTimer = null;
