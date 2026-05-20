@@ -1018,3 +1018,129 @@ header {
 .chapter-item span {
     color: #777;
 }
+
+/* Responsive Mobile cơ bản cho trang Detail */
+@media (max-width: 768px) {
+    .manga-detail-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .info-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .info-label {
+        width: auto;
+    }
+    .detail-tags {
+        justify-content: center;
+    }
+    .detail-actions {
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+.contact-content h1{
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.container-main{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 15px;
+}
+.contact-content{
+    background: var(--bg-body);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+} 
+.form-group label{
+    font-size: 14px;
+    color: #aaa;
+    font-weight: bold;
+}
+.form-groupt input,
+.form-group textarea{
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: #333;
+    color: var(--text-light);
+    transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus{ 
+    border-color: var(--primary-orange);
+    outline: none;
+}
+.form-group textarea{
+    resize: vertical;
+    min-height: 120px;
+}
+.contact-content button{
+    background-color: var(--primary-orange);
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.lab-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+}
+
+.lab-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.lab-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-orange);
+}
+
+.lab-card-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.lab-card-body ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lab-card-body ul li a {
+    font-size: 14px;
+    color: var(--text-muted);
+    display: inline-block;
+    width: 100%;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.lab-card-body ul li a:hover {
+    color: var(--primary-orange);
+    padding-left: 6px;
+}

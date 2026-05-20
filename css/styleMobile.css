@@ -248,22 +248,15 @@
         display: none;
     }
 }
-.manga-detail-block {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+@media (max-width: 1024px) {
+    .lab-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
-.info-row {
-    flex-direction: column;
-    gap: 5px;
-}
-.info-label {
-    width: auto;
-}
-.detail-tags {
-    justify-content: center;
-}
-.detail-actions {
-    justify-content: center;
-    margin-top: 20px;
+
+@media (max-width: 600px) {
+    .lab-grid-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
 }
