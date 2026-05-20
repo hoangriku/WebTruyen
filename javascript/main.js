@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const userAvatar = document.getElementById('userAvatar');
     const accountDropdown = document.getElementById('accountDropdown');
 
+    const libraryGrid = document.getElementById('libraryGrid');
     // Hàm thực thi mở Menu Danh mục
     function openMobileMenu(e) {
         if (e) e.preventDefault();
@@ -149,12 +150,9 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSlider(currentIndex);
         resetAutoplay();
     }
-    // ── XỬ LÝ CHO TRANG DETAIL.HTML ──
-    // Kiểm tra xem các element của trang detail có tồn tại không
     const detailTitle = document.getElementById('detailTitle');
     
     if (detailTitle) {
-        // Lấy query string từ URL (Ví dụ: ?id=2)
         const urlParams = new URLSearchParams(window.location.search);
         const mangaId = urlParams.get('id');
 
@@ -165,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!isNaN(index) && mangaData[index]) {
             const manga = mangaData[index];
 
-            // Đổ dữ liệu vào các thẻ tương ứng
             document.title = manga.title + " - Nettrom";
             detailTitle.textContent = manga.title;
             
@@ -181,13 +178,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const detailDesc = document.getElementById('detailDesc');
             if (detailDesc) detailDesc.textContent = manga.desc;
 
-            // Render danh sách tags
             const detailTagsContainer = document.getElementById('detailTags');
             if (detailTagsContainer) {
-                detailTagsContainer.innerHTML = ''; // Xóa rỗng mẫu cứng ban đầu
+                detailTagsContainer.innerHTML = '';
                 manga.tags.forEach(tagText => {
                     const span = document.createElement('span');
-                    span.className = 'tag-link'; // Class css cho tag ở trang detail
+                    span.className = 'tag-link';
                     span.textContent = tagText;
                     detailTagsContainer.appendChild(span);
                 });
@@ -197,6 +193,79 @@ document.addEventListener('DOMContentLoaded', function () {
             detailTitle.textContent = "Không tìm thấy thông tin bộ truyện này!";
             const detailLeft = document.querySelector('.detail-left');
             if (detailLeft) detailLeft.style.display = 'none';
+        }
+    }
+    if (libraryGrid) {
+        const btnFilterNew = document.getElementById('filterNew');
+        const btnFilterAZ = document.getElementById('filterAZ');
+
+        // Hàm Render danh sách truyện ra lưới giao diện dựa trên mảng truyền vào
+        function renderLibrary(mangaArray) {
+            libraryGrid.innerHTML = ''; // Làm sạch lưới trước khi render
+
+            if (mangaArray.length === 0) {
+                libraryGrid.innerHTML = '<div class="loading-text">Không tìm thấy truyện nào!</div>';
+                return;
+            }
+
+            mangaArray.forEach(manga => {
+                // Khởi tạo thẻ liên kết ngoài 
+                const card = document.createElement('a');
+                card.className = 'library-card';
+                const rawId = manga.no.replace('NO .', '').trim();
+                const cleanId = parseInt(rawId, 10) - 1; 
+                card.href = `detail.html?id=${cleanId}`;
+
+                card.innerHTML = `
+                    <div class="library-card-img-wrapper">
+                        <img src="${manga.image}" alt="${manga.title}">
+                    </div>
+                    <div class="library-card-info">
+                        <h4 class="library-card-title">${manga.title}</h4>
+                        <div class="library-card-author">${manga.author || 'Đang cập nhật'}</div>
+                    </div>
+                `;
+                libraryGrid.appendChild(card);
+            });
+        }
+
+        // Tạo bản sao của mảng gốc để thực hiện các thao tác sắp xếp tránh làm hỏng mảng slide ban đầu
+        let displayedMangas = [...mangaData];
+
+        renderLibrary(displayedMangas);
+
+        // Sự kiện khi bấm vào nút Lọc "Mới"
+        if (btnFilterNew) {
+            btnFilterNew.addEventListener('click', function() {
+                // Đổi trạng thái hiển thị nút hoạt động
+                btnFilterAZ.classList.remove('active');
+                btnFilterNew.classList.add('active');
+
+                // Sắp xếp theo số hiệu "no" lớn nhất lên đầu (Mới nhất)
+                displayedMangas = [...mangaData].sort((a, b) => {
+                    const idA = parseInt(a.no.replace('NO .', '').trim(), 10);
+                    const idB = parseInt(b.no.replace('NO .', '').trim(), 10);
+                    return idB - idA; // Đảo ngược danh sách truyện mới nhất lên trước
+                });
+
+                renderLibrary(displayedMangas);
+            });
+        }
+
+        // Sự kiện khi bấm vào nút Lọc từ "A-Z"
+        if (btnFilterAZ) {
+            btnFilterAZ.addEventListener('click', function() {
+                // Đổi trạng thái hiển thị nút hoạt động
+                btnFilterNew.classList.remove('active');
+                btnFilterAZ.classList.add('active');
+
+                // Sắp xếp mảng theo bảng chữ cái Alphabet dựa trên Tiêu đề (title)
+                displayedMangas.sort((a, b) => {
+                    return a.title.localeCompare(b.title, 'vi', { sensitivity: 'base' });
+                });
+
+                renderLibrary(displayedMangas);
+            });
         }
     }
 });

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/styleMobile.css">
-    <title>Contact Page</title>
+    <title>Home Page</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
             </button>
         </div>
         <ul class="drawer-menu">
-            <li class="menu-item active"><a href="index.html"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li class="menu-item active"><a href=""><i class="fa fa-home"></i> Trang chủ</a></li>
             <li class="menu-item"><a href=""><i class="fa fa-bell"></i> Thông báo</a></li>
             
             <li class="menu-item has-dropdown">
@@ -55,7 +55,7 @@
     </div>
     <!--Mobile Bottom Navigation-->
     <nav class="mobile-bottom-nav">
-        <a href="index.html" class="nav-item active">
+        <a href="#" class="nav-item active">
             <i class="fa fa-home"></i>
             <span>Trang chủ</span>
         </a>
@@ -72,8 +72,8 @@
             <span>Tìm kiếm</span>
         </a>
         <a href="#" class="nav-item">
-            <i class="fa fa-book"></i>
-            <span>Thư viện</span>
+            <i class="fa fa-user"></i>
+            <span>Người dùng</span>
         </a>
     </nav>
 
@@ -143,28 +143,33 @@
     </header>
     <!--Main Content-->
     <main>
-        <div class="container-main">
-            <div class="contact-content">
-                <h1>Liên hệ</h1>
-                <form action="">
-                    <div class="form-group">
-                        <label for="name">Tên của bạn:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Số điện thoại:</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Lời nhắn:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit">Gửi</button>
-                </form>
+        <div class="library-container">
+            <div class="library-breadcrumb">
+                <a href="index.html">Trang chủ</a> <i class="fa fa-angle-right"></i> <span>Danh sách truyện</span>
+            </div>
+
+            <div class="filter-bar">
+                <span class="filter-label"><i class="fa-solid fa-filter"></i> Sắp xếp theo:</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" id="filterNew">Mới</button>
+                    <button class="filter-btn" id="filterAZ">A-Z</button>
+                    <button class="filter-btn disabled-btn">Xem nhiều</button>
+                    <button class="filter-btn disabled-btn">Theo dõi</button>
+                </div>
+            </div>
+
+            <div class="library-grid" id="libraryGrid">
+                <div class="loading-text">Đang tải danh sách truyện...</div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="page-item prev-page disabled"><i class="fa fa-angle-left"></i></a>
+                <a href="#" class="page-item active">1</a>
+                <a href="#" class="page-item">2</a>
+                <a href="#" class="page-item">3</a>
+                <span class="page-dots">...</span>
+                <a href="#" class="page-item">10</a>
+                <a href="#" class="page-item next-page"><i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </main>

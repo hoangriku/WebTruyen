@@ -247,6 +247,27 @@
     #openBtn {
         display: none;
     }
+    .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .library-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+    }
+    .library-card-title {
+        font-size: 13px;
+        height: 36px;
+    }
+    .pagination {
+        gap: 4px;
+    }
+    .page-item {
+        min-width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
 }
 @media (max-width: 1024px) {
     .lab-grid-container {
